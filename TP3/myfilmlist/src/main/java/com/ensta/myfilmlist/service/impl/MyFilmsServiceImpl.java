@@ -2,9 +2,12 @@ package com.ensta.myfilmlist.service.impl;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.IntStream;
 
+import com.ensta.myfilmlist.dao.FilmDAO;
+import com.ensta.myfilmlist.dao.Impl.JdbcFilmDAO;
+import com.ensta.myfilmlist.dto.FilmDTO;
 import com.ensta.myfilmlist.exception.ServiceException;
+import com.ensta.myfilmlist.mapper.FilmMapper;
 import com.ensta.myfilmlist.model.Film;
 import com.ensta.myfilmlist.model.Realisateur;
 import com.ensta.myfilmlist.service.MyFilmsService;
@@ -29,5 +32,11 @@ public class MyFilmsServiceImpl implements MyFilmsService {
 
       public double calculerNoteMoyenne(double[] notes) {
             return (double) Math.round(100*(Arrays.stream(notes).average().getAsDouble()))/100;
+      }
+
+      public List<FilmDTO> findAllFilms(){
+            FilmDAO filmDAO = JdbcFilmDAO.getInstance();
+            List<Film> listeFilmsDAO = filmDAO.findAll();
+            return FilmMapper.convertFilmToFilmDTOs(listeFilmsDAO);
       }
 }

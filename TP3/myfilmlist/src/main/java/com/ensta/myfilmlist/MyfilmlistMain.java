@@ -1,5 +1,7 @@
 package com.ensta.myfilmlist;
 
+import com.ensta.myfilmlist.persistence.ConnectionManager;
+
 /**
  * Classe principale pour executer un traitement et s'arreter ensuite.
  */
@@ -15,10 +17,10 @@ public class MyfilmlistMain {
 		// context.refresh();
 		// MyfilmlistTests myFilmListTests = context.getBean(MyfilmlistTests.class);
 
-		// Demarrage de la base de donnees
-		// ConnectionManager.initDatabase();
-		// ConnectionManager.testConnection();
-		// ConnectionManager.createWebServer();
+		//Demarrage de la base de donnees
+		ConnectionManager.initDatabase();
+		//ConnectionManager.testConnection();
+		//ConnectionManager.createWebServer();
 
 		System.out.println("--------------------");
 		myFilmListTests.updateRealisateurCelebreTest();
