@@ -15,16 +15,7 @@ public interface MyFilmsService {
        */
       public Realisateur updateRealisateurCelebre(Realisateur realisateur) throws ServiceException;
 
-      public default int calculerDureeTotale(List<Film> listeFilms) {
-            int dureeTotale = 0;
-            for(Film film : listeFilms) {dureeTotale += film.getDuree();}
-            return dureeTotale;
-      }
+      public int calculerDureeTotale(List<Film> listeFilms);
 
-      public default double calculerNoteMoyenne(double[] notes) {
-            float moyenne = 0;
-            for (int compteur = 0; compteur < notes.length ; compteur++){moyenne += notes[compteur]/notes.length;}
-            double moyennedeuxchiffres = (double) Math.round(moyenne*100)/100;
-            return(moyennedeuxchiffres);
-      }
+      public double calculerNoteMoyenne(double[] notes);
 }
