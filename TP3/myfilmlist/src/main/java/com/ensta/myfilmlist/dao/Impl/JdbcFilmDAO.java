@@ -9,6 +9,9 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
+import org.springframework.dao.DataAccessException;
+import org.springframework.jdbc.core.JdbcTemplate;
+
 import com.ensta.myfilmlist.dao.FilmDAO;
 import com.ensta.myfilmlist.model.Film;
 import com.ensta.myfilmlist.persistence.ConnectionManager;
@@ -25,26 +28,23 @@ public class JdbcFilmDAO implements FilmDAO {
             }
 
       private static final String FIND_FILMS_QUERY = "SELECT id, titre, duree FROM Film";
+      private JdbcTemplate jdbcTemplate = ConnectionManager.getJdbcTemplate();
 
       @Override
       public List<Film> findAll() {
             List<Film> listeFilms = new ArrayList<>();
-            try (
                   Connection conn = dataSource.getConnection();
-                  PreparedStatement statement = conn.prepareStatement(FIND_FILMS_QUERY);
-            ) {
-                  try (ResultSet resultSet = statement.executeQuery()){
-                        while (resultSet.next()) {
-                        Film film = new Film();
-                        film.setId(resultSet.getInt("id"));
+                  try (PreparedStatement statement = conn.prepareStatement(FIND_FILMS_QUERY))
+                  {
+                  ResultSet resultSet = statement.executeQuery();{
+                  List<Object> listeFilms = 
+                  jdbcTemplate.query(FIND_FILMS_QUERY, (resultSet, rownum) -> { Film film = new Film();
+                  film.setId(resultSet.getInt("id"));
                         film.setTitre(resultSet.getString("titre"));
                         film.setDuree(resultSet.getInt("duree"));
-                        listeFilms.add(film);
-                        }
+                        return film;});
                   }
-            } catch (SQLException e) {
-                  System.out.println(e);}
-            return listeFilms;
+            }
+      return listeFilms;
       }
-
 }
