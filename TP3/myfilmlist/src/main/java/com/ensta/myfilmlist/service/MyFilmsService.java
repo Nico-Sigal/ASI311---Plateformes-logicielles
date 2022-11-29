@@ -21,9 +21,10 @@ public interface MyFilmsService {
             return dureeTotale;
       }
 
-      public default int calculerNoteMoyenne(int a, int b) {
-            int moyenne = 0;
-            
-            return moyenne;
+      public default double calculerNoteMoyenne(double[] notes) {
+            float moyenne = 0;
+            for (int compteur = 0; compteur < notes.length ; compteur++){moyenne += notes[compteur]/notes.length;}
+            double moyennedeuxchiffres = (double) Math.round(moyenne*100)/100;
+            return(moyennedeuxchiffres);
       }
 }
