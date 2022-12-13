@@ -16,6 +16,8 @@ public class MyFilmsServiceImpl implements MyFilmsService {
 
       private static int NB_FILMS_MIN_REALISATEUR_CELEBRE = 3;
 
+      private FilmDAO filmDAO = JdbcFilmDAO.getInstance();
+
       @Override public Realisateur updateRealisateurCelebre(Realisateur realisateur) throws ServiceException {
             try {
                   realisateur.setCelebre(realisateur.getFilmRealises().size() >= NB_FILMS_MIN_REALISATEUR_CELEBRE);
@@ -36,7 +38,7 @@ public class MyFilmsServiceImpl implements MyFilmsService {
 
       public List<FilmDTO> findAllFilms(){
             FilmDAO filmDAO = JdbcFilmDAO.getInstance();
-            List<Film> listeFilmsDAO = filmDAO.findAll();
-            return FilmMapper.convertFilmToFilmDTOs(listeFilmsDAO);
+            List<Film> listeFilms = filmDAO.findAll();
+            return FilmMapper.convertFilmToFilmDTOs(listeFilms);
       }
 }
