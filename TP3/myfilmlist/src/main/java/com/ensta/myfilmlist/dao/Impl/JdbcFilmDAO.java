@@ -2,23 +2,18 @@ package com.ensta.myfilmlist.dao.Impl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
 
 import com.ensta.myfilmlist.dao.FilmDAO;
 import com.ensta.myfilmlist.model.Film;
-import com.ensta.myfilmlist.persistence.ConnectionManager;
 
+@Repository
 public class JdbcFilmDAO implements FilmDAO {
 
-      private JdbcTemplate jdbcTemplate = ConnectionManager.getJdbcTemplate();
-
-      private static FilmDAO instance;
-
-      public static FilmDAO getInstance(){
-            if (instance == null){
-                  instance = new JdbcFilmDAO();}
-            return instance;
-      }
+      @Autowired
+      private JdbcTemplate jdbcTemplate;
 
       private static final String FIND_FILMS_QUERY = "SELECT id, titre, duree FROM Film";
 

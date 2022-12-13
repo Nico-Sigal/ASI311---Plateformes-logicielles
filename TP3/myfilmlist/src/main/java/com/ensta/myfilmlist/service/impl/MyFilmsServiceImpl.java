@@ -3,8 +3,10 @@ package com.ensta.myfilmlist.service.impl;
 import java.util.Arrays;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.ensta.myfilmlist.dao.FilmDAO;
-import com.ensta.myfilmlist.dao.Impl.JdbcFilmDAO;
 import com.ensta.myfilmlist.dto.FilmDTO;
 import com.ensta.myfilmlist.exception.ServiceException;
 import com.ensta.myfilmlist.mapper.FilmMapper;
@@ -12,11 +14,13 @@ import com.ensta.myfilmlist.model.Film;
 import com.ensta.myfilmlist.model.Realisateur;
 import com.ensta.myfilmlist.service.MyFilmsService;
 
+@Service
 public class MyFilmsServiceImpl implements MyFilmsService {
 
       private static int NB_FILMS_MIN_REALISATEUR_CELEBRE = 3;
 
-      private FilmDAO filmDAO = JdbcFilmDAO.getInstance();
+      @Autowired
+      private FilmDAO filmDAO;
 
       @Override public Realisateur updateRealisateurCelebre(Realisateur realisateur) throws ServiceException {
             try {
@@ -37,7 +41,6 @@ public class MyFilmsServiceImpl implements MyFilmsService {
       }
 
       public List<FilmDTO> findAllFilms(){
-            FilmDAO filmDAO = JdbcFilmDAO.getInstance();
             List<Film> listeFilms = filmDAO.findAll();
             return FilmMapper.convertFilmToFilmDTOs(listeFilms);
       }
