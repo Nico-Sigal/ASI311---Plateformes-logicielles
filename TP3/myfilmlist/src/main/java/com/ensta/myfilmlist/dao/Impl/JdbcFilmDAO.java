@@ -28,6 +28,7 @@ public class JdbcFilmDAO implements FilmDAO {
 
       @Override
       public List<Film> findAll() {
+            System.out.println("méthode findAll utilisée ici");
             List<Film> listeFilms = new ArrayList<>();
             try (
                   Connection conn = dataSource.getConnection();
