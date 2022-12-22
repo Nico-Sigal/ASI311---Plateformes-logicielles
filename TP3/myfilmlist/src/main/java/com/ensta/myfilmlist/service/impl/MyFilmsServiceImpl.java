@@ -32,7 +32,7 @@ public class MyFilmsServiceImpl implements MyFilmsService {
             }
       }
 
-      public int calculerDureeTotale(List<Film> listeFilms) throws ServiceException {
+      @Override public int calculerDureeTotale(List<Film> listeFilms) throws ServiceException {
             try {
                   return listeFilms.stream().mapToInt(Film::getDuree).sum();
             } catch (Exception e) {
@@ -40,7 +40,7 @@ public class MyFilmsServiceImpl implements MyFilmsService {
             }
       }
 
-      public double calculerNoteMoyenne(double[] notes) throws ServiceException {
+      @Override public double calculerNoteMoyenne(double[] notes) throws ServiceException {
             try {
                   return (double) Math.round(100*(Arrays.stream(notes).average().getAsDouble()))/100;
             } catch (Exception e) {
@@ -48,7 +48,7 @@ public class MyFilmsServiceImpl implements MyFilmsService {
             }
       }
 
-      public List<FilmDTO> findAllFilms() throws ServiceException {
+      @Override public List<FilmDTO> findAllFilms() throws ServiceException {
             try {
                   List<Film> listeFilms = filmDAO.findAll();
                   return FilmMapper.convertFilmToFilmDTOs(listeFilms);
