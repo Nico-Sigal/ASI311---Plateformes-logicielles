@@ -3,12 +3,14 @@ package com.ensta.myfilmlist;
 import org.springframework.beans.BeansException;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import com.ensta.myfilmlist.exception.ServiceException;
+
 /**
  * Classe principale pour executer un traitement et s'arreter ensuite.
  */
 public class MyfilmlistMain {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ServiceException {
 		try (// Initialisation du Contexte Spring
 		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext()) {
 			context.register(MyfilmlistTests.class);

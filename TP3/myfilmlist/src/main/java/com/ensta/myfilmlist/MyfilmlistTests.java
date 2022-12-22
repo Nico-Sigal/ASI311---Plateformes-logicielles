@@ -91,8 +91,9 @@ public class MyfilmlistTests {
 
 	/**
 	 * Permet de tester le calcul de la duree totale des films.
+	 * @throws ServiceException
 	 */
-	public void calculerDureeTotaleTest() {
+	public void calculerDureeTotaleTest() throws ServiceException {
 		// Creation des films
 
 		Film laCommunauteDeLAnneau = new Film();
@@ -121,8 +122,9 @@ public class MyfilmlistTests {
 
 	/**
 	 * Permet de tester le calcul de la note moyenne des films.
+	 * @throws ServiceException
 	 */
-	public void calculerNoteMoyenneTest() {
+	public void calculerNoteMoyenneTest() throws ServiceException {
 		// Creation des notes
 
 		double[] notes = { 18, 15.5, 12 };
@@ -137,8 +139,9 @@ public class MyfilmlistTests {
 
 	/**
 	 * Permet de tester la recuperation des films.
+	 * @throws ServiceException
 	 */
-	public void findAllFilmsTest() {
+	public void findAllFilmsTest() throws ServiceException {
 		List<FilmDTO> films = myFilmsService.findAllFilms();
 
 		// Attendue : 4
