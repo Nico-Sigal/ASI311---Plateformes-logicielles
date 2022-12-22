@@ -33,6 +33,9 @@ public class MyfilmlistMain {
 			myFilmListTests.calculerNoteMoyenneTest();
 
 			System.out.println("--------------------");
+			myFilmListTests.updateRealisateurCelebresTest();
+
+			System.out.println("--------------------");
 			myFilmListTests.findAllFilmsTest();
 
 			System.out.println("--------------------");

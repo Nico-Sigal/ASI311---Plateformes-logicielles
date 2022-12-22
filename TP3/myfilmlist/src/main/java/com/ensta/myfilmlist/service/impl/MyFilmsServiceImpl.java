@@ -2,6 +2,7 @@ package com.ensta.myfilmlist.service.impl;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -48,6 +49,21 @@ public class MyFilmsServiceImpl implements MyFilmsService {
             }
       }
 
+      @Override public List<Realisateur> updateRealisateurCelebres(List<Realisateur> listeRealisateurs) throws ServiceException {
+            try {
+                  return listeRealisateurs.stream().map(realisateur->{
+                        try {
+                              return updateRealisateurCelebre(realisateur);
+                        } catch (ServiceException e) {
+                              e.printStackTrace();
+                        }
+                        return realisateur;
+                  }).filter(Realisateur::isCelebre).collect(Collectors.toList());
+            } catch (Exception e) {
+                  throw new ServiceException();
+            }
+      }
+      
       @Override public List<FilmDTO> findAllFilms() throws ServiceException {
             try {
                   List<Film> listeFilms = filmDAO.findAll();

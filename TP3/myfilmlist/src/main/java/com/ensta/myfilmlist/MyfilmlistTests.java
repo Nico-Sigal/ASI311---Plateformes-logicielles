@@ -113,7 +113,7 @@ public class MyfilmlistTests {
 		leSeigneurDesAnneaux.add(lesDeuxTours);
 		leSeigneurDesAnneaux.add(leRetourDuRoi);
 
-		// Calcule de la duree totale
+		// Calcul de la duree totale
 
 		long dureeTotale = myFilmsService.calculerDureeTotale(leSeigneurDesAnneaux);
 		// Attendue : 558 minutes
@@ -135,6 +135,112 @@ public class MyfilmlistTests {
 
 		// Attendue : 15,17
 		System.out.println("La note moyenne est : " + noteMoyenne);
+	}
+
+	/** QUESTION BONUS
+	 * Permet de tester l'update d'une liste de réalisateurs.
+	 * @throws ServiceException
+	 */
+	public void updateRealisateurCelebresTest() throws ServiceException {
+
+		// Creation des Realisateurs
+
+		Realisateur jamesCameron = new Realisateur();
+		jamesCameron.setNom("Cameron");
+		jamesCameron.setPrenom("James");
+		jamesCameron.setDateNaissance(LocalDate.of(1954, 8, 16));
+
+		Realisateur peterJackson = new Realisateur();
+		peterJackson.setNom("Jackson");
+		peterJackson.setPrenom("Peter");
+		peterJackson.setDateNaissance(LocalDate.of(1961, 10, 31));
+
+		Realisateur quentinTarantino = new Realisateur();
+		quentinTarantino.setNom("Tarantino");
+		quentinTarantino.setPrenom("Quentin");
+		quentinTarantino.setDateNaissance(LocalDate.of(1963, 3, 27));
+
+
+		// Creation des films
+
+		Film avatar = new Film();
+		avatar.setTitre("Avatar");
+		avatar.setDuree(162);
+		avatar.setRealisateur(jamesCameron);
+
+		Film laCommunauteDeLAnneau = new Film();
+		laCommunauteDeLAnneau.setTitre("La communauté de l'anneau");
+		laCommunauteDeLAnneau.setDuree(178);
+		laCommunauteDeLAnneau.setRealisateur(peterJackson);
+
+		Film lesDeuxTours = new Film();
+		lesDeuxTours.setTitre("Les deux tours");
+		lesDeuxTours.setDuree(179);
+		lesDeuxTours.setRealisateur(peterJackson);
+
+		Film leRetourDuRoi = new Film();
+		leRetourDuRoi.setTitre("Le retour du roi");
+		leRetourDuRoi.setDuree(201);
+		leRetourDuRoi.setRealisateur(peterJackson);
+
+		Film onceUponATimeInHollywood = new Film();
+		onceUponATimeInHollywood.setTitre("Once Upon a Time ... in Hollywood");
+		onceUponATimeInHollywood.setDuree(161);
+		onceUponATimeInHollywood.setRealisateur(quentinTarantino);
+
+		Film lesHuitSalopards = new Film();
+		lesHuitSalopards.setTitre("Les Huit Salopards");
+		lesHuitSalopards.setDuree(168);
+		lesHuitSalopards.setRealisateur(quentinTarantino);
+
+		Film djangoUnchained = new Film();
+		djangoUnchained.setTitre("Django Unchained");
+		djangoUnchained.setDuree(164);
+		djangoUnchained.setRealisateur(quentinTarantino);
+
+		// Affectation des films aux realisateurs
+
+		List<Film> peterJacksonFilms = new ArrayList<>();
+		peterJacksonFilms.add(laCommunauteDeLAnneau);
+		peterJacksonFilms.add(lesDeuxTours);
+		peterJacksonFilms.add(leRetourDuRoi);
+		peterJackson.setFilmRealises(peterJacksonFilms);
+
+		List<Film> jamesCameronFilms = new ArrayList<>();
+		jamesCameronFilms.add(avatar);
+		jamesCameron.setFilmRealises(jamesCameronFilms);
+
+		List<Film> quentinTarantinoFilms = new ArrayList<>();
+		quentinTarantinoFilms.add(onceUponATimeInHollywood);
+		quentinTarantinoFilms.add(lesHuitSalopards);
+		quentinTarantinoFilms.add(djangoUnchained);
+		quentinTarantino.setFilmRealises(quentinTarantinoFilms);
+
+		// Création de la liste des Realisateurs
+		List<Realisateur> listeRealisateurs = new ArrayList<>();
+		listeRealisateurs.add(peterJackson);
+		listeRealisateurs.add(jamesCameron);
+		listeRealisateurs.add(quentinTarantino);
+		
+		// Mise a jour du statut "celebre" des Realisateurs en une seule fois
+
+		try {
+			listeRealisateurs = myFilmsService.updateRealisateurCelebres(listeRealisateurs);
+
+			System.out.println("Vérification de la modification des attributs célèbres :");
+			// Attendue : true
+			System.out.println("Peter Jackson est-il celebre ? " + peterJackson.isCelebre());
+			// Attendue : false
+			System.out.println("James Cameron est-il celebre ? " + jamesCameron.isCelebre());
+			// Attendue : true
+			System.out.println("Quentin Tarantino est-il celebre ? " + quentinTarantino.isCelebre());
+		} catch (ServiceException e) {
+			e.printStackTrace();
+		}
+		
+		System.out.println();
+		System.out.println("La liste des réalisateurs célèbres parmi ceux demandés est la suivante : ");
+		listeRealisateurs.forEach(realisateur->System.out.println(realisateur.getPrenom() + " " + realisateur.getNom()));
 	}
 
 	/**
