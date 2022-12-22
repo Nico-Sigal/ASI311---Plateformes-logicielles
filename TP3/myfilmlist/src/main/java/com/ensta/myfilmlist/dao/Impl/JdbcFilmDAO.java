@@ -19,7 +19,6 @@ public class JdbcFilmDAO implements FilmDAO {
 
       @Override
       public List<Film> findAll() {
-            System.out.println("méthode findAll utilisée ici");
             return jdbcTemplate.query(FIND_FILMS_QUERY, (resultSet,index) -> {
                   Film film = new Film();
                   film.setId(resultSet.getInt("id"));

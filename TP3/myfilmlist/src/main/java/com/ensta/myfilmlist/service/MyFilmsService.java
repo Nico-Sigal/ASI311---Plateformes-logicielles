@@ -29,17 +29,17 @@ public interface MyFilmsService {
        * @throws ServiceException : exception de type "Service" en cas de disfonctionnement de la fonction
        */
       public double calculerNoteMoyenne(double[] notes) throws ServiceException;
-
-      /**
-       * @return liste des films : liste de tous les films en base de données
-       * @throws ServiceException : exception de type "Service" en cas de disfonctionnement de la fonction
-       */
-      public List<FilmDTO> findAllFilms() throws ServiceException;
-
+      
       /** QUESTION BONUS
        * @param realisateur : réalisateur supposé non nul
        * @return realisateur updaté : réalisateur dont le statut célèbre a été mis à jour par la fonction
        * @throws ServiceException : exception de type "Service" en cas de disfonctionnement de la fonction
        */
       public List<Realisateur> updateRealisateurCelebres(List<Realisateur> listeRealisateurs) throws ServiceException;
+
+      /**
+       * @return liste des films : liste de tous les films en base de données
+       * @throws ServiceException : exception de type "Service" en cas de disfonctionnement de la fonction
+       */
+      public List<FilmDTO> findAllFilms() throws ServiceException;
 }
