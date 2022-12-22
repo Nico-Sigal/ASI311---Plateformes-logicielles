@@ -32,7 +32,7 @@ public class MyfilmlistMain {
 			System.out.println("--------------------");
 			myFilmListTests.calculerNoteMoyenneTest();
 
-			System.out.println("--------------------");
+			System.out.println("------ BONUS -------");
 			myFilmListTests.updateRealisateurCelebresTest();
 
 			System.out.println("--------------------");
