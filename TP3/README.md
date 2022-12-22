@@ -5,7 +5,7 @@ Pour lancer le main : dans les options de la flèche play, run Java
 
 ## PARTIE 1
 
-Sortie terminal lors de l'exécution de MyFilmsListTest.java (réalisé jusqu'à la question bonus partie 1.5) :
+Sortie terminal lors de l'exécution de MyFilmsListTest.java (réalisé jusqu'à la question bonus partie 1.5)
 "(base) nicolassigal@mac-nico ASI311-Testing %  /usr/bin/env /Users/nicolassigal/opt/anaconda3/bin/java @/var/folders/ps/6c7w4gcs2t33_1x_8gxgrpqh0000gn/T/
 cp_18u2z9ma2jhxzpt9j2lqyfihx.argfile com.ensta.myfilmlist.MyfilmlistMain 
 Initialisation de la base de donnees effectuee avec succes
