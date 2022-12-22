@@ -10,9 +10,9 @@ import com.ensta.myfilmlist.model.Realisateur;
 public interface MyFilmsService {
       
       /**
-       * @param realisateur
-       * @return realisateur updaté
-       * @throws ServiceException
+       * @param realisateur : réalisateur supposé non nul
+       * @return realisateur updaté : réalisateur dont le statut célèbre a été mis à jour par la fonction
+       * @throws ServiceException : exception de type "Service" en cas de disfonctionnement de la fonction
        */
       public Realisateur updateRealisateurCelebre(Realisateur realisateur) throws ServiceException;
 
