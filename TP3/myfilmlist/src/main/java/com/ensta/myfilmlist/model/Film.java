@@ -13,14 +13,6 @@ public class Film {
 
 	private Realisateur realisateur;
 
-	public Realisateur getRealisateur() {
-		return realisateur;
-	}
-
-	public void setRealisateur(Realisateur realisateur) {
-		this.realisateur = realisateur;
-	}
-
 	public long getId() {
 		return id;
 	}
@@ -45,4 +37,11 @@ public class Film {
 		this.duree = duree;
 	}
 
+	public Realisateur getRealisateur() {
+		return realisateur;
+	}
+
+	public void setRealisateur(Realisateur realisateur) {
+		this.realisateur = realisateur;
+	}
 }
