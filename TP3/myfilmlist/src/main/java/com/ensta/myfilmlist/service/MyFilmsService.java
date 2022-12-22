@@ -1,5 +1,6 @@
 package com.ensta.myfilmlist.service;
 
+import java.security.Provider.Service;
 import java.util.List;
 
 import com.ensta.myfilmlist.dto.FilmDTO;
@@ -16,9 +17,23 @@ public interface MyFilmsService {
        */
       public Realisateur updateRealisateurCelebre(Realisateur realisateur) throws ServiceException;
 
-      public int calculerDureeTotale(List<Film> listeFilms);
+      /**
+       * @param listeFilms : liste des films dont on calcule la durée totale, liste supposée non nulle de films non nuls
+       * @return duree totale : entier représentant la somme des durées des films de la liste
+       * @throws ServiceException : exception de type "Service" en cas de disfonctionnement de la fonction
+       */
+      public int calculerDureeTotale(List<Film> listeFilms) throws ServiceException;
 
-      public double calculerNoteMoyenne(double[] notes);
+      /**
+       * @param notes : tableau de décimal non nul contenant les notes des films
+       * @return note moyenne : décimal à deux chiffres après la virgule représentant la moyenne des notes données en paramètre
+       * @throws ServiceException : exception de type "Service" en cas de disfonctionnement de la fonction
+       */
+      public double calculerNoteMoyenne(double[] notes) throws ServiceException;
 
-      public List<FilmDTO> findAllFilms();
+      /**
+       * @return liste des films : liste de tous les films en base de données
+       * @throws ServiceException : exception de type "Service" en cas de disfonctionnement de la fonction
+       */
+      public List<FilmDTO> findAllFilms() throws ServiceException;
 }
