@@ -24,7 +24,7 @@ Peter Jackson est-il celebre ? true
 James Cameron est-il celebre ? false
 Quentin Tarantino est-il celebre ? true
 
-La liste des réalisateurs célèbres parmi ceux demandés est la suivante : 
+La liste des réalisateurs célèbres parmi ceux demandés est la suivante :
 Peter Jackson
 Quentin Tarantino"
 
