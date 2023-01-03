@@ -1,8 +1,18 @@
 import { FilmCard } from "./FilmCard"
-import { mockFilms } from "./mock/FilmMock"
+import { useEffect, useState } from "react";
+import { getAllFilms } from "./api/FilmApi";
 
 export default function FilmList() {
-	const films= mockFilms
+	const [films, setFilms] = useState([]);
+
+	useEffect(() => {
+		getAllFilms().then(reponse => {
+		setFilms(reponse.data);
+		}).catch(err => {
+		console.log(err);
+		})
+	}, []);
+
 
 	return films.map((film)=> { return <FilmCard film={film} key={film.id} />})
 }
