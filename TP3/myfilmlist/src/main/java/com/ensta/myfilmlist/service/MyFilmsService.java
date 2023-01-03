@@ -3,7 +3,9 @@ package com.ensta.myfilmlist.service;
 import java.util.List;
 
 import com.ensta.myfilmlist.dto.FilmDTO;
+import com.ensta.myfilmlist.dto.RealisateurDTO;
 import com.ensta.myfilmlist.exception.ServiceException;
+import com.ensta.myfilmlist.form.FilmForm;
 import com.ensta.myfilmlist.model.Film;
 import com.ensta.myfilmlist.model.Realisateur;
 
@@ -42,4 +44,14 @@ public interface MyFilmsService {
        * @throws ServiceException : exception de type "Service" en cas de disfonctionnement de la fonction
        */
       public List<FilmDTO> findAllFilms() throws ServiceException;
+
+      public FilmDTO findFilmById(long id) throws ServiceException;
+
+      public FilmDTO createFilm(FilmForm filmForm) throws ServiceException;
+
+      public List<RealisateurDTO> findAllRealisateurs() throws ServiceException;
+
+      public RealisateurDTO findRealisateurByNomAndPrenom(String nom, String prenom) throws ServiceException;
+
+      public void deleteFilm(long id) throws ServiceException;
 }

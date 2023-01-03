@@ -13,7 +13,13 @@ public class Film {
 
 	private Realisateur realisateur;
 
-	public long getId() {
+	public Film(int int1, String string, int int2) {
+      }
+
+      public Film() {
+      }
+
+      public long getId() {
 		return id;
 	}
 

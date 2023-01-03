@@ -1,6 +1,7 @@
 package com.ensta.myfilmlist;
 
 import org.springframework.beans.BeansException;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import com.ensta.myfilmlist.exception.ServiceException;
@@ -8,6 +9,7 @@ import com.ensta.myfilmlist.exception.ServiceException;
 /**
  * Classe principale pour executer un traitement et s'arreter ensuite.
  */
+@SpringBootApplication
 public class MyfilmlistMain {
 
 	public static void main(String[] args) throws ServiceException {

@@ -17,6 +17,10 @@ public class Realisateur {
       
       private boolean celebre;
 
+      public Realisateur(int int1, String string, String string2, LocalDate localDate, boolean boolean1) {
+      }
+      public Realisateur() {
+      }
       public long getId() {
             return id;
       }

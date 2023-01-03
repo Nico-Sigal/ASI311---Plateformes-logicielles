@@ -1,8 +1,10 @@
 package com.ensta.myfilmlist.dao.Impl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -34,7 +36,44 @@ public class JdbcRealisateurDAO implements RealisateurDAO {
 
       @Override
       public Realisateur findByNomAndPrenom(String nom, String prenom) {
-            return null;
+            try {
+            Realisateur real = jdbcTemplate.queryForObject(
+                        "SELECT * FROM Realisateur WHERE nom=? AND prenom=?",
+                        (rs, rownum) -> {
+                        return new Realisateur(
+                              rs.getInt("id"),
+                              rs.getString("nom"),
+                              rs.getString("prenom"),
+                              rs.getDate("date_naissance").toLocalDate(),
+                              rs.getBoolean("celebre"));
+                        },
+                        nom, prenom);
+            return real;
+            }catch (EmptyResultDataAccessException e) {
+                  e.printStackTrace();
+                  return null;
+            }
       }
-      
+
+      @Override
+      public Optional<Realisateur> findById(long id) {
+            try {
+                  Realisateur real = jdbcTemplate.queryForObject(
+                        "SELECT * FROM Realisateur WHERE id=?",
+                        (rs, rownum) -> {
+                              return new Realisateur(
+                                    rs.getInt("id"),
+                                    rs.getString("nom"),
+                                    rs.getString("prenom"),
+                                    rs.getDate("date_naissance").toLocalDate(),
+                                    rs.getBoolean("celebre")
+                              );
+                        }
+                        , id
+                  );
+                  return Optional.of(real);
+            } catch (EmptyResultDataAccessException e) {
+                  return Optional.empty();
+            }
+      }
 }
