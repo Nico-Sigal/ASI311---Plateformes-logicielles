@@ -33,4 +33,4 @@ Springboot : une fois les Beans ajoutés, run MyfilmlistApplication.java pour la
 ## PARTIE FRONT
 
 ### A faire une fois : npx create-react-app my-film
-### cd my-film puis npm start et le localhost:3000/ s'ouvre tout seul
+### cd my-film puis npm install, npm start et le localhost:3000/ s'ouvre tout seul
